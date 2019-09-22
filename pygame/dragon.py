@@ -8,7 +8,7 @@ class Dragon(pygame.sprite.Sprite):
         pygame.sprite.Sprite.__init__(self)
         self.image = pygame.transform.scale((pygame.image.load('dragon_2.png')), (150, 80))
         self.rect = self.image.get_rect()
-        self.rect.centerx = 100
+        self.rect.centerx = 70
         self.rect.bottom = height / 2
         self.speedy = 0
 

@@ -1,10 +1,9 @@
 import sys, pygame, random
-import dragon
+import dragon, enemy
 
 size = width, height = 1024, 576
 black = 10, 10, 10
-red = 250, 0, 0
-fps = 60
+fps = 30
 
 pygame.init()
 pygame.display.set_caption("dragon shmup")
@@ -12,8 +11,14 @@ clock = pygame.time.Clock()
 
 screen = pygame.display.set_mode(size)
 
+all_sprites = pygame.sprite.Group()
+enemies = pygame.sprite.Group()
 player = dragon.Dragon()
-all_sprites = pygame.sprite.Group(player)
+all_sprites.add(player)
+for i in range(5):
+    e = enemy.Enemy()
+    all_sprites.add(e)
+    enemies.add(e)
 
 while 1:
     clock.tick(fps)
