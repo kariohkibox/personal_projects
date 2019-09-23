@@ -12,7 +12,7 @@ class Enemy(pygame.sprite.Sprite):
         self.image = pygame.Surface((40, 20))
         self.image.fill(red)
         self.rect = self.image.get_rect()
-        self.rect.x = random.randrange(500, 1000)
+        self.rect.x = random.randrange(width + 10, width + 200)
         self.rect.y = random.randrange(100, 500)
         self.speedx = random.randrange(7, 10)
 

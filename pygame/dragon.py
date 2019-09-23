@@ -3,6 +3,7 @@ import pygame
 width = 1024
 height = 576
 
+
 class Dragon(pygame.sprite.Sprite):
     def __init__(self):
         pygame.sprite.Sprite.__init__(self)
