@@ -1,4 +1,4 @@
-import pygame
+import pygame, os
 
 width = 1024
 height = 576

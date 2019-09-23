@@ -1,4 +1,4 @@
-import pygame
+import pygame, os
 
 width = 1024
 height = 576
@@ -7,7 +7,7 @@ height = 576
 class Dragon(pygame.sprite.Sprite):
     def __init__(self):
         pygame.sprite.Sprite.__init__(self)
-        self.image = pygame.transform.scale((pygame.image.load('dragon_2.png')), (150, 80))
+        self.image = pygame.transform.scale((pygame.image.load(os.path.join("img", "dragon_2.png"))), (150, 80))
         self.rect = self.image.get_rect()
         self.rect.centerx = 70
         self.rect.bottom = height / 2

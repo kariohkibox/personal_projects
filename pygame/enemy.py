@@ -1,4 +1,4 @@
-import pygame, random
+import pygame, random, os
 
 width = 1024
 height = 576
