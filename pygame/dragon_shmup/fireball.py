@@ -9,8 +9,7 @@ yellow = (210, 210, 0)
 class Fireball(pygame.sprite.Sprite):
     def __init__(self):
         pygame.sprite.Sprite.__init__(self)
-        self.image = pygame.Surface((10, 20))
-        self.image.fill(yellow)
+        self.image = pygame.transform.scale((pygame.image.load(os.path.join("img", "fireball.png"))), (42, 28))
         self.rect = self.image.get_rect()
         self.speedx = 10
 
