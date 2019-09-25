@@ -17,7 +17,7 @@ player_mini_img.set_colorkey(black)
 bgX = 0
 bgX2 = bgOne.get_width()
 
-pygame.display.set_caption("dragon shmup")
+pygame.display.set_caption("Dragon Shmup!")
 clock = pygame.time.Clock()
 previous_time = pygame.time.get_ticks()
 font_name = pygame.font.match_font("Calibri")
@@ -69,6 +69,23 @@ def draw_lives(surf, x, y, lives, img):
         surf.blit(img, img_rect)
 
 
+def show_go_screen():
+    screen.blit(bgOne, bgOne.get_rect())
+    draw_text(screen, "Dragon Shmup!", 64, width / 2, height / 4)
+    draw_text(screen, "Arrow keys to move, Space to fire", 22,
+              width / 2, height / 2)
+    draw_text(screen, "Press any key to begin", 18, width / 2, height * 3 / 4)
+    pygame.display.flip()
+    waiting = True
+    while waiting:
+        clock.tick(fps)
+        for event2 in pygame.event.get():
+            if event2.type == pygame.QUIT:
+                pygame.quit()
+            if event2.type == pygame.KEYUP:
+                waiting = False
+
+
 # spawns enemies
 for i in range(5):
     new_enemy()
@@ -77,8 +94,21 @@ for i in range(5):
 score = 0
 
 # game loop
+game_over = True
 running = True
 while running:
+    if game_over:
+        show_go_screen()
+        game_over = False
+        all_sprites = pygame.sprite.Group()
+        enemies = pygame.sprite.Group()
+        fireballs = pygame.sprite.Group()
+        powerups = pygame.sprite.Group()
+        player = dragon.Dragon()
+        all_sprites.add(player)
+        for i in range(5):
+            new_enemy()
+        score = 0
     clock.tick(fps)
     keystate = pygame.key.get_pressed()
     current_time = pygame.time.get_ticks()
@@ -156,7 +186,8 @@ while running:
 
     # end game if player has no lives
     if player.lives == 0:
-        running = False
+        game_over = True
+        # running = False
 
     screen.fill(black)
     screen.blit(bgOne, (bgX, 0))
